@@ -63,3 +63,9 @@ target/
 #Ipython Notebook
 .ipynb_checkpoints
 migrations/*_making_changes.py
+
+# PyCharm
+/.idea/
+
+# OS X
+.DS_Store
