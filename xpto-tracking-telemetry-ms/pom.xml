@@ -118,7 +118,6 @@
                                 <configPackage>com.tonnie.ipl.xpto.tracking.telemetry.openapi.config</configPackage>
                                 <delegatePattern>true</delegatePattern>
                                 <interfaceOnly>true</interfaceOnly>
-                                <useSettersForGetters>false</useSettersForGetters>
                             </configOptions>
                         </configuration>
                     </execution>
@@ -141,7 +140,6 @@
                                 <configPackage>com.tonnie.ipl.xpto.tracking.telemetry.openapi.config</configPackage>
                                 <delegatePattern>true</delegatePattern>
                                 <interfaceOnly>true</interfaceOnly>
-                                <useSettersForGetters>false</useSettersForGetters>
                             </configOptions>
                         </configuration>
                     </execution>
@@ -163,7 +161,6 @@
                                 <configPackage>com.tonnie.ipl.xpto.tracking.telemetry.openapi.config</configPackage>
                                 <delegatePattern>true</delegatePattern>
                                 <interfaceOnly>true</interfaceOnly>
-                                <useSettersForGetters>false</useSettersForGetters>
                             </configOptions>
                         </configuration>
                     </execution>

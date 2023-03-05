@@ -2,7 +2,7 @@ version: '3'
 services:
 # Telemetry MS
   telemetry:
-    build: ./XptoTracking-TelemetryMS
+    build: ./xpto-tracking-telemetry-ms
     ports:
         - 8080:8080
     environment:
@@ -10,7 +10,7 @@ services:
         - spring.datasource.username=postgres
         - spring.datasource.password=postgres
     volumes:
-        - ./XptoTracking-VehicleMS/data:/var/lib/postgresql
+        - ./xpto-tracking-telemetry-ms/data:/var/lib/postgresql
     depends_on:
         - telemetry_pg
 # Telemtry DB
@@ -24,15 +24,18 @@ services:
         - POSTGRES_DB=xptotracking_ms_telemetry
 # Vehicle MS
   vehicle:
-    build: ./XptoTracking-VehicleMS
+    build: ./xpto-tracking-vehicle-ms
     ports:
         - 8081:8080
     environment:
         - spring.datasource.url=jdbc:postgresql://172.17.0.1:5961/xptotracking_ms_vehicle?currentSchema=public
         - spring.datasource.username=postgres
         - spring.datasource.password=postgres
+        - client.integration.tracking.telemetry-profile.base-path=http://172.17.0.1:8080/tracking
+        - client.integration.tracking.customer.base-path=http://172.17.0.1:8082/tracking
+        - client.integration.tracking.driver.base-path=http://172.17.0.1:8082/tracking
     volumes:
-        - ./XptoTracking-VehicleMS/data:/var/lib/postgresql
+        - ./xpto-tracking-vehicle-ms/data:/var/lib/postgresql
     depends_on:
         - vehicle_pg
 # Vehicle DB
@@ -46,13 +49,13 @@ services:
         - POSTGRES_DB=xptotracking_ms_vehicle
 # People MS
   people:
-    build: ./XptoTracking-PeopleMS
+    build: ./xpto-tracking-people-ms
     ports:
         - 8082:8080
     environment:
         - DATABASE_URI=postgresql://postgres:postgres@172.17.0.1:5962/xptotracking_ms_people
     volumes:
-        - ./XptoTracking-VehicleMS/data:/var/lib/postgresql
+        - ./xpto-tracking-people-ms/data:/var/lib/postgresql
     depends_on:
         - people_pg
 # People DB
@@ -66,13 +69,13 @@ services:
         - POSTGRES_DB=xptotracking_ms_people
 # Data MS
   data:
-    build: ./XptoTracking-DataMS
+    build: ./xpto-tracking-data-ms
     ports:
         - 8083:8080
     environment:
         - DATABASE_URI=postgresql://postgres:postgres@172.17.0.1:5963/xptotracking_ms_data
     volumes:
-        - ./XptoTracking-VehicleMS/data:/var/lib/postgresql
+        - ./xpto-tracking-data-ms/data:/var/lib/postgresql
     depends_on:
         - data_pg
 # Data DB
