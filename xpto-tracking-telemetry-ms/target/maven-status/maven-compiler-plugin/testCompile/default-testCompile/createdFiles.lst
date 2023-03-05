@@ -1,9 +1,0 @@
-com/tonnie/ipl/xpto/tracking/telemetry/repository/TelemetryProfileRepositoryTest.class
-com/tonnie/ipl/xpto/tracking/telemetry/config/MockConfig.class
-com/tonnie/ipl/xpto/tracking/telemetry/controller/TelemetryProfileControllerTest.class
-com/tonnie/ipl/xpto/tracking/telemetry/service/TelemetryProfileServiceTest.class
-com/tonnie/ipl/xpto/tracking/telemetry/repository/SensorRepositoryTest.class
-com/tonnie/ipl/xpto/tracking/telemetry/UnitTestProfile.class
-com/tonnie/ipl/xpto/tracking/telemetry/controller/SensorControllerTest.class
-com/tonnie/ipl/xpto/tracking/telemetry/service/SensorServiceTest.class
-com/tonnie/ipl/xpto/tracking/telemetry/XptoTrackingTelemetryMsApplicationTests.class
