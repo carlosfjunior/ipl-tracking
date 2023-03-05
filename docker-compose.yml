@@ -1,0 +1,86 @@
+version: '3'
+services:
+# Telemetry MS
+  telemetry:
+    build: ./XptoTracking-TelemetryMS
+    ports:
+        - 8080:8080
+    environment:
+        - spring.datasource.url=jdbc:postgresql://172.17.0.1:5960/xptotracking_ms_telemetry?currentSchema=public
+        - spring.datasource.username=postgres
+        - spring.datasource.password=postgres
+    volumes:
+        - ./XptoTracking-VehicleMS/data:/var/lib/postgresql
+    depends_on:
+        - telemetry_pg
+# Telemtry DB
+  telemetry_pg:
+    image: postgres:13
+    ports:
+        - 5960:5432
+    environment:
+        - POSTGRES_USER=postgres
+        - POSTGRES_PASSWORD=postgres
+        - POSTGRES_DB=xptotracking_ms_telemetry
+# Vehicle MS
+  vehicle:
+    build: ./XptoTracking-VehicleMS
+    ports:
+        - 8081:8080
+    environment:
+        - spring.datasource.url=jdbc:postgresql://172.17.0.1:5961/xptotracking_ms_vehicle?currentSchema=public
+        - spring.datasource.username=postgres
+        - spring.datasource.password=postgres
+    volumes:
+        - ./XptoTracking-VehicleMS/data:/var/lib/postgresql
+    depends_on:
+        - vehicle_pg
+# Vehicle DB
+  vehicle_pg:
+    image: postgres:13
+    ports:
+        - 5961:5432
+    environment:
+        - POSTGRES_USER=postgres
+        - POSTGRES_PASSWORD=postgres
+        - POSTGRES_DB=xptotracking_ms_vehicle
+# People MS
+  people:
+    build: ./XptoTracking-PeopleMS
+    ports:
+        - 8082:8080
+    environment:
+        - DATABASE_URI=postgresql://postgres:postgres@172.17.0.1:5962/xptotracking_ms_people
+    volumes:
+        - ./XptoTracking-VehicleMS/data:/var/lib/postgresql
+    depends_on:
+        - people_pg
+# People DB
+  people_pg:
+    image: postgres:13
+    ports:
+        - 5962:5432
+    environment:
+        - POSTGRES_USER=postgres
+        - POSTGRES_PASSWORD=postgres
+        - POSTGRES_DB=xptotracking_ms_people
+# Data MS
+  data:
+    build: ./XptoTracking-DataMS
+    ports:
+        - 8083:8080
+    environment:
+        - DATABASE_URI=postgresql://postgres:postgres@172.17.0.1:5963/xptotracking_ms_data
+    volumes:
+        - ./XptoTracking-VehicleMS/data:/var/lib/postgresql
+    depends_on:
+        - data_pg
+# Data DB
+  data_pg:
+    image: postgres:13
+    ports:
+        - 5963:5432
+    environment:
+        - POSTGRES_USER=postgres
+        - POSTGRES_PASSWORD=postgres
+        - POSTGRES_DB=xptotracking_ms_data

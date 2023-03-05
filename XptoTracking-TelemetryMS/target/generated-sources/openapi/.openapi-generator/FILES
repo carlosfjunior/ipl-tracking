@@ -1,0 +1,14 @@
+README.md
+pom.xml
+src/main/java/com/tonnie/ipl/xpto/tracking/telemetry/openapi/api/ApiUtil.java
+src/main/java/com/tonnie/ipl/xpto/tracking/telemetry/openapi/api/TelemetryprofilesApi.java
+src/main/java/com/tonnie/ipl/xpto/tracking/telemetry/openapi/model/CreateTelemetryProfileRequestDto.java
+src/main/java/com/tonnie/ipl/xpto/tracking/telemetry/openapi/model/CreateTelemetryProfileResponseDto.java
+src/main/java/com/tonnie/ipl/xpto/tracking/telemetry/openapi/model/EnumSensorTypeDto.java
+src/main/java/com/tonnie/ipl/xpto/tracking/telemetry/openapi/model/EnumTelemetryProfileTypeDto.java
+src/main/java/com/tonnie/ipl/xpto/tracking/telemetry/openapi/model/ErrorResponseDto.java
+src/main/java/com/tonnie/ipl/xpto/tracking/telemetry/openapi/model/ErrorTypeEnumDto.java
+src/main/java/com/tonnie/ipl/xpto/tracking/telemetry/openapi/model/GetSensorResponseDto.java
+src/main/java/com/tonnie/ipl/xpto/tracking/telemetry/openapi/model/GetTelemetryProfileResponseDto.java
+src/main/java/com/tonnie/ipl/xpto/tracking/telemetry/openapi/model/ListTelemetryProfilesResponseDto.java
+src/main/java/com/tonnie/ipl/xpto/tracking/telemetry/openapi/model/UpdateTelemetryProfileRequestDto.java

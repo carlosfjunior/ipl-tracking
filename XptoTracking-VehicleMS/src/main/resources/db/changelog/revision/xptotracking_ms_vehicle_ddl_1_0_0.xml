@@ -1,0 +1,60 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+	<!-- ******************************** -->
+	<!-- *** BEGIN TABLE DECLARATIONS *** -->
+	<!-- ******************************** -->
+
+	<changeSet
+		logicalFilePath="db/changelog/revision/xptotracking_ms_vehicle_ddl_1_0_0.xml"
+		author="Carlos.Fernandes"
+		id="xptotracking_ms_vehicle_ddl_1_0_0-REV-001">
+
+		<preConditions onFail="MARK_RAN">
+			<not>
+				<tableExists tableName="vehicle" />
+			</not>
+		</preConditions>
+
+		<createTable tableName="vehicle">
+			<column name="vehicle_id" type="UUID">
+				<constraints nullable="false" primaryKey="true"
+					primaryKeyName="vehicle_pk" />
+			</column>
+			<column name="customer_owner_id" type="UUID">
+				<constraints nullable="false" />
+			</column>
+			<column name="telemetry_profile_id" type="UUID">
+				<constraints nullable="false" />
+			</column>
+			<column name="current_driver_id" type="UUID">
+				<constraints nullable="false" />
+			</column>
+			<column name="number_plate" type="VARCHAR(10 BYTE)">
+				<constraints nullable="false" />
+			</column>
+			<column name="vin" type="VARCHAR(17 BYTE)">
+				<constraints nullable="false" />
+			</column>
+			<column name="color" type="VARCHAR(50 BYTE)">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+
+		<rollback />
+
+	</changeSet>
+
+
+	<!-- ******************************** -->
+	<!-- *** END TABLE DECLARATIONS *** -->
+	<!-- ******************************** -->
+
+	<!-- ******************************** -->
+	<!-- *** BEGIN TABLE CONSTRAINTS *** -->
+	<!-- ******************************** -->
+
+</databaseChangeLog>

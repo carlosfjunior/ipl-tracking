@@ -1,0 +1,29 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+	<changeSet logicalFilePath="db/changelog/revision/xptotracking_ms_telemetry_dml_1_0_0.xml" author="Carlos.Fernandes"
+			   context="test" id="xptotracking_ms_vehicle_dml_0_1_0-REV-001_DATA">
+		<insert tableName="vehicle">
+			<column name="vehicle_id" value="e74486b1-cec7-4236-af6c-2aee39d98397" />
+			<column name="customer_owner_id" value="9e6a1deb-1fc4-463c-9ba2-aa3668c75ca1" />
+			<column name="telemetry_profile_id" value="f51652c5-b8c1-4bee-8ce3-8aec356f9a51" />
+			<column name="current_driver_id" value="e64486ff-0494-41d8-8449-9eb939e1717b" />
+			<column name="number_plate" value="RG-12-PH" />
+			<column name="vin" value="4Y1SL65848Z411439" />
+			<column name="color" value="red" />
+		</insert>
+		<insert tableName="vehicle">
+			<column name="vehicle_id" value="7fc379b8-f64c-4792-959f-a4a51ef477f5" />
+			<column name="customer_owner_id" value="9e6a1deb-1fc4-463c-9ba2-aa3668c75ca1" />
+			<column name="telemetry_profile_id" value="f51652c5-b8c1-4bee-8ce3-8aec356f9a51" />
+			<column name="current_driver_id" value="e64486ff-0494-41d8-8449-9eb939e1717b" />
+			<column name="number_plate" value="RG-12-PG" />
+			<column name="vin" value="4Y1SL65848Z411438" />
+			<column name="color" value="red" />
+		</insert>
+	</changeSet>
+
+</databaseChangeLog>

@@ -1,0 +1,520 @@
+openapi: 3.0.3
+info:
+  title: IPL Tracking - Microservice API
+  description: API description for Tracking microservice.
+  version: 1.0.0
+servers:
+- url: http://localhost:8080/tracking
+  description: Localhost - IPL Tracking DEV
+tags:
+- name: Data
+  description: Data definition
+paths:
+  /telemetrydata:
+    get:
+      tags:
+      - TelemetryData
+      summary: Get TelemetryData list
+      description: This operation is used to retrieve a list of TelemetryData.
+      operationId: list_telemetry_data
+      responses:
+        "200":
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListTelemetryDataResponse'
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        "500":
+          description: Unexpected errors not mapped to status codes mentioned above
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-openapi-router-controller: swagger_server.controllers.telemetry_data_controller
+    post:
+      tags:
+      - TelemetryData
+      summary: create new TelemetryData
+      description: This operation is usedto create a new TelemetryData on System.
+      operationId: create_telemetry_data
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateTelemetryDataRequest'
+        required: true
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateTelemetryDataResponse'
+        "400":
+          description: Parameters missing in request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        "409":
+          description: There is already a vehicle registered with same number plate
+            or vin
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        "500":
+          description: Unexpected errors not mapped to status codes mentioned above
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-openapi-router-controller: swagger_server.controllers.telemetry_data_controller
+  /telemetrydata/{telemetryDataId}:
+    get:
+      tags:
+      - TelemetryData
+      summary: Get a single TelemetryData's info
+      description: This operation is used to retrieve the details of a specific device.
+      operationId: get_telemetry_data
+      parameters:
+      - name: telemetryDataId
+        in: path
+        description: Unique identifier of the TelemetryData in the database
+        required: true
+        style: simple
+        explode: false
+        schema:
+          $ref: '#/components/schemas/UUID'
+        example: 0af401df-7d7a-1f36-817d-7b0a058d0003
+      responses:
+        "200":
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetTelemetryDataResponse'
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        "404":
+          description: Resource not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        "500":
+          description: Unexpected errors not mapped to status codes mentioned above
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-openapi-router-controller: swagger_server.controllers.telemetry_data_controller
+  /geodata:
+    get:
+      tags:
+      - GeoData
+      summary: Get GeoData list
+      description: This operation is used to retrieve a list of GeoData.
+      operationId: list_geo_data
+      responses:
+        "200":
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListGeoDataResponse'
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        "500":
+          description: Unexpected errors not mapped to status codes mentioned above
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-openapi-router-controller: swagger_server.controllers.geo_data_controller
+    post:
+      tags:
+      - GeoData
+      summary: create new GeoData
+      description: This operation is usedto create a new GeoData on System.
+      operationId: create_geo_data
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateGeoDataRequest'
+        required: true
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateGeoDataResponse'
+        "400":
+          description: Parameters missing in request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        "409":
+          description: There is already a vehicle registered with same number plate
+            or vin
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        "500":
+          description: Unexpected errors not mapped to status codes mentioned above
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-openapi-router-controller: swagger_server.controllers.geo_data_controller
+  /geodata/{geoDataId}:
+    get:
+      tags:
+      - GeoData
+      summary: Get a single GeoData's info
+      description: This operation is used to retrieve the details of a specific device.
+      operationId: get_geo_data
+      parameters:
+      - name: geoDataId
+        in: path
+        description: Unique identifier of the GeoData in the database
+        required: true
+        style: simple
+        explode: false
+        schema:
+          $ref: '#/components/schemas/UUID'
+        example: 0af401df-7d7a-1f36-817d-7b0a058d0003
+      responses:
+        "200":
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetTelemetryDataResponse'
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        "404":
+          description: Resource not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        "500":
+          description: Unexpected errors not mapped to status codes mentioned above
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-openapi-router-controller: swagger_server.controllers.geo_data_controller
+components:
+  schemas:
+    GetTelemetryDataResponse:
+      required:
+      - date
+      - sensor_type
+      - telemetryDataId
+      - value
+      - vehicleId
+      type: object
+      properties:
+        telemetryDataId:
+          $ref: '#/components/schemas/UUID'
+        vehicleId:
+          $ref: '#/components/schemas/UUID'
+        date:
+          type: string
+          description: Creation date and time
+          format: date-time
+          example: 2021-01-30T08:30:00Z
+        sensor_type:
+          $ref: '#/components/schemas/EnumSensorType'
+        value:
+          type: string
+          description: Value
+      example:
+        date: 2021-01-30T08:30:00Z
+        telemetryDataId: 0af401df-7d7a-1f36-817d-7b0a058d0003
+        vehicleId: null
+        sensor_type: RPM
+        value: value
+    CreateTelemetryDataRequest:
+      required:
+      - date
+      - sensor_type
+      - value
+      - vehicleId
+      type: object
+      properties:
+        vehicleId:
+          $ref: '#/components/schemas/UUID'
+        date:
+          type: string
+          description: Creation date and time
+          format: date-time
+          example: 2021-01-30T08:30:00Z
+        sensor_type:
+          $ref: '#/components/schemas/EnumSensorType'
+        value:
+          type: string
+          description: Value
+    CreateTelemetryDataResponse:
+      required:
+      - telemetryDataId
+      type: object
+      properties:
+        telemetryDataId:
+          $ref: '#/components/schemas/UUID'
+      example:
+        telemetryDataId: 0af401df-7d7a-1f36-817d-7b0a058d0003
+    ListTelemetryDataResponse:
+      required:
+      - content
+      - totalResults
+      type: object
+      properties:
+        content:
+          type: array
+          description: list of paged items
+          items:
+            $ref: '#/components/schemas/GetTelemetryDataResponse'
+        totalResults:
+          type: integer
+          description: total number of records
+          format: int64
+          example: 50
+      description: generic paged response
+      example:
+        totalResults: 50
+        content:
+        - date: 2021-01-30T08:30:00Z
+          telemetryDataId: 0af401df-7d7a-1f36-817d-7b0a058d0003
+          vehicleId: null
+          sensor_type: RPM
+          value: value
+        - date: 2021-01-30T08:30:00Z
+          telemetryDataId: 0af401df-7d7a-1f36-817d-7b0a058d0003
+          vehicleId: null
+          sensor_type: RPM
+          value: value
+    GetGeoDataResponse:
+      required:
+      - altimeter
+      - date
+      - geoDataId
+      - latitude
+      - longitude
+      - sensor_type
+      - telemetryDataId
+      - vehicleId
+      type: object
+      properties:
+        geoDataId:
+          $ref: '#/components/schemas/UUID'
+        vehicleId:
+          $ref: '#/components/schemas/UUID'
+        date:
+          type: string
+          description: Creation date and time
+          format: date-time
+          example: 2021-01-30T08:30:00Z
+        sensor_type:
+          $ref: '#/components/schemas/EnumSensorType'
+        latitude:
+          type: string
+          description: Latitude
+        longitude:
+          type: string
+          description: Longitude
+        altimeter:
+          type: string
+          description: Altimeter
+      example:
+        date: 2021-01-30T08:30:00Z
+        altimeter: altimeter
+        latitude: latitude
+        vehicleId: null
+        sensor_type: RPM
+        geoDataId: 0af401df-7d7a-1f36-817d-7b0a058d0003
+        longitude: longitude
+    CreateGeoDataRequest:
+      required:
+      - altimeter
+      - date
+      - latitude
+      - longitude
+      - sensor_type
+      - vehicleId
+      type: object
+      properties:
+        vehicleId:
+          $ref: '#/components/schemas/UUID'
+        date:
+          type: string
+          description: Creation date and time
+          format: date-time
+          example: 2021-01-30T08:30:00Z
+        sensor_type:
+          $ref: '#/components/schemas/EnumSensorType'
+        latitude:
+          type: string
+          description: Latitude
+        longitude:
+          type: string
+          description: Longitude
+        altimeter:
+          type: string
+          description: Altimeter
+    CreateGeoDataResponse:
+      required:
+      - geoDataId
+      type: object
+      properties:
+        geoDataId:
+          $ref: '#/components/schemas/UUID'
+      example:
+        geoDataId: 0af401df-7d7a-1f36-817d-7b0a058d0003
+    ListGeoDataResponse:
+      required:
+      - content
+      - totalResults
+      type: object
+      properties:
+        content:
+          type: array
+          description: list of paged items
+          items:
+            $ref: '#/components/schemas/GetGeoDataResponse'
+        totalResults:
+          type: integer
+          description: total number of records
+          format: int64
+          example: 50
+      description: generic paged response
+      example:
+        totalResults: 50
+        content:
+        - date: 2021-01-30T08:30:00Z
+          altimeter: altimeter
+          latitude: latitude
+          vehicleId: null
+          sensor_type: RPM
+          geoDataId: 0af401df-7d7a-1f36-817d-7b0a058d0003
+          longitude: longitude
+        - date: 2021-01-30T08:30:00Z
+          altimeter: altimeter
+          latitude: latitude
+          vehicleId: null
+          sensor_type: RPM
+          geoDataId: 0af401df-7d7a-1f36-817d-7b0a058d0003
+          longitude: longitude
+    EnumSensorType:
+      type: string
+      description: type of Sensor
+      enum:
+      - RPM
+      - ODOMETER
+      - SPEED
+    ErrorResponse:
+      required:
+      - errorCode
+      - errorMessage
+      - errorType
+      type: object
+      properties:
+        code:
+          type: string
+          description: Application error code
+          example: XYZ0001
+        type:
+          $ref: '#/components/schemas/ErrorTypeEnum'
+        message:
+          type: string
+          description: Short error explanation
+          example: Unauthorized
+        details:
+          type: string
+          description: Short error detail
+          example: Parameter X has invalid value
+    ErrorTypeEnum:
+      type: string
+      description: Error Type
+      enum:
+      - PERSISTENCE
+      - BUSINESS
+      - COMMUNICATION
+      - UNKNOWN
+    UUID:
+      pattern: "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+      type: string
+      example: 0af401df-7d7a-1f36-817d-7b0a058d0003
+
