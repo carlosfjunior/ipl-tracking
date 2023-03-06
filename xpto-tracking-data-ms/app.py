@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 import config
 
-
 connex_app = config.connex_app
 connex_app.add_api('swagger.yaml', arguments={'title': 'IPL Tracking - Microservice API'}, pythonic_params=True)
 

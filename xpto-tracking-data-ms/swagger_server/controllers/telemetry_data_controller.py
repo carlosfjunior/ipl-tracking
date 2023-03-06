@@ -1,3 +1,5 @@
+import os
+
 import connexion
 import json
 
@@ -16,6 +18,9 @@ from swagger_server.models.list_telemetry_data_response import ListTelemetryData
 
 telemetry_data_service = TelemetryDataService()
 telemetry_data_schema = TelemetryDataSchema()
+
+configuration = swagger_client.Configuration()
+configuration.host = os.environ['VEHICLE_API_URI']
 api_instance = swagger_client.VehicleApi(swagger_client.ApiClient(swagger_client.Configuration()))
 
 

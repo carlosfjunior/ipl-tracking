@@ -1,0 +1,220 @@
+{
+	"info": {
+		"_postman_id": "7b980f2a-c791-4f65-b217-01c698fb4c7f",
+		"name": "XPTO Tracking - Telemetry Profile",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "List Telemetry Profile",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/telemetryprofiles",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"telemetryprofiles"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Telemetry Profile",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/telemetryprofiles/:telemetryProfileId",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"telemetryprofiles",
+						":telemetryProfileId"
+					],
+					"variable": [
+						{
+							"key": "telemetryProfileId",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Telemetry Profile",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Profile abacate\",\r\n    \"sensors\": [\r\n        \"f8d6cede-e3dc-47c9-a61d-429f316c35cf\"\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/telemetryprofiles/:telemetryprofileId",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"telemetryprofiles",
+						":telemetryprofileId"
+					],
+					"variable": [
+						{
+							"key": "telemetryprofileId",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Telemetry Profile",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Profile abacate3\",\r\n    \"sensors\": [\r\n        \"f8d6cede-e3dc-47c9-a61d-429f316c35cf\"\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/telemetryprofiles",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"telemetryprofiles"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Telemetry Profile",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/telemetryprofiles/:telemetryprofileId",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"telemetryprofiles",
+						":telemetryprofileId"
+					],
+					"variable": [
+						{
+							"key": "telemetryprofileId",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Sensor To Telemetry Profile",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/telemetryprofiles/:telemetryprofileId/sensor/:sensorId",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"telemetryprofiles",
+						":telemetryprofileId",
+						"sensor",
+						":sensorId"
+					],
+					"variable": [
+						{
+							"key": "telemetryprofileId",
+							"value": ""
+						},
+						{
+							"key": "sensorId",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Remove Sensor To Telemetry Profile Copy",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/telemetryprofiles/:telemetryprofileId/sensor/:sensorId",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"telemetryprofiles",
+						":telemetryprofileId",
+						"sensor",
+						":sensorId"
+					],
+					"variable": [
+						{
+							"key": "telemetryprofileId",
+							"value": ""
+						},
+						{
+							"key": "sensorId",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8080/tracking",
+			"type": "default"
+		}
+	]
+}

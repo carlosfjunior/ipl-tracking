@@ -10,7 +10,7 @@ import com.tonnie.ipl.xpto.tracking.vehicle.openapi.model.*;
 import com.tonnie.ipl.xpto.tracking.vehicle.service.IVehicleService;
 import com.tonnie.ipl.xpto.tracking.vehicle.util.Messages;
 import lombok.RequiredArgsConstructor;
-import org.openapitools.client.api.CustomerApi;
+import org.apache.commons.lang3.StringUtils;
 import org.openapitools.client.api.DriverApi;
 import org.openapitools.client.api.TelemetryProfileApi;
 import org.slf4j.MDC;
@@ -20,6 +20,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.HttpClientErrorException;
 
+import java.util.Objects;
 import java.util.UUID;
 
 @RestController
@@ -29,7 +30,6 @@ public class VehicleController implements VehiclesApi {
     private final IVehicleService service;
     private final MapperDtoEntity mapper;
     private final TelemetryProfileApi telemetryProfileApi;
-    private final CustomerApi customerApi;
     private final DriverApi driverApi;
 
     @Override
@@ -39,15 +39,12 @@ public class VehicleController implements VehiclesApi {
         headers.set(X_TRACE_ID, MDC.get(TRACE_ID));
 
         try {
-            customerApi.getCustomer(createVehicleRequestDto.getCustomerOwnerId());
-        } catch (HttpClientErrorException e) {
-            throw new EntityNotFoundException(String.format(
-                    Messages.CUSTOMER_OWNER_ASSOCIATION_FAILED_CUSTOMER_NOT_FOUND,
-                    createVehicleRequestDto.getCustomerOwnerId()));
-        }
-
-        try {
-            driverApi.getDriver(createVehicleRequestDto.getCurrentDriverId());
+            var getDriverResponse = driverApi.getDriver(createVehicleRequestDto.getCurrentDriverId());
+            if (!StringUtils.equals(getDriverResponse.getCustomerId(), createVehicleRequestDto.getCustomerOwnerId())) {
+                throw new EntityNotFoundException(String.format(
+                        Messages.CUSTOMER_OWNER_ASSOCIATION_FAILED_CUSTOMER_NOT_RELATED,
+                        createVehicleRequestDto.getCustomerOwnerId()));
+            }
         } catch (HttpClientErrorException e) {
             throw new EntityNotFoundException(String.format(
                     Messages.CURRENT_DRIVER_ASSOCIATION_FAILED_DRIVER_NOT_FOUND,

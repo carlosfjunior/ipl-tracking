@@ -10,12 +10,9 @@ import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.openapitools.client.api.CustomerApi;
 import org.openapitools.client.api.DriverApi;
 import org.openapitools.client.api.TelemetryProfileApi;
-import org.openapitools.client.model.GetCustomerResponse;
 import org.openapitools.client.model.GetDriverResponse;
 import org.openapitools.client.model.GetTelemetryProfileResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,9 +44,6 @@ class VehicleControllerTest {
 
 	@Autowired
 	private ObjectMapper jsonMapper;
-
-	@MockBean
-	private CustomerApi customerApi;
 
 	@MockBean
 	private DriverApi driverApi;
@@ -91,8 +85,9 @@ class VehicleControllerTest {
 	@Order(3)
 	void createEntity() throws Exception {
 
-		Mockito.when(customerApi.getCustomer(Mockito.anyString())).thenReturn(new GetCustomerResponse());
-		Mockito.when(driverApi.getDriver(Mockito.anyString())).thenReturn(new GetDriverResponse());
+		var getDriverResponse = new GetDriverResponse();
+		getDriverResponse.setCustomerId("efe5ddaf-c79f-4db1-b64e-3e7f6d1d30ab");
+		Mockito.when(driverApi.getDriver(Mockito.anyString())).thenReturn(getDriverResponse);
 		Mockito.when(telemetryProfileApi.getTelemetryProfile(Mockito.anyString())).thenReturn(new GetTelemetryProfileResponse());
 
 		URL requestResource = Resources.getResource(BASE_RESOURCE_REQUEST_PATH+"request_create_vehicle.json");

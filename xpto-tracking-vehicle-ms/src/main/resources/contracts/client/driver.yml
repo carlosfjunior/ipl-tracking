@@ -103,7 +103,7 @@ paths:
               schema:
                 $ref: '../commons.yml#/components/schemas/ErrorResponse'
 
-  /drivers/{driverId}:
+  /drivers/{driver_id}:
     patch:
       tags:
         - Driver
@@ -113,7 +113,7 @@ paths:
       description: This operation is used to update some of the Driver's attributes.
       operationId: updateDriver
       parameters:
-        - name: driverId
+        - name: driver_id
           in: path
           schema:
             $ref: '../commons.yml#/components/schemas/UUID'
@@ -175,7 +175,7 @@ paths:
       description: This operation is used to retrieve the details of a specific device.
       operationId: getDriver
       parameters:
-        - name: driverId
+        - name: driver_id
           in: path
           schema:
             $ref: '../commons.yml#/components/schemas/UUID'
@@ -223,7 +223,7 @@ paths:
       description: This operation is delete a Driver.
       operationId: deleteDriver
       parameters:
-        - name: driverId
+        - name: driver_id
           in: path
           schema:
             $ref: '../commons.yml#/components/schemas/UUID'
@@ -282,14 +282,14 @@ components:
     GetDriverResponse:
       type: object
       properties:
-        driverId:
+        driver_id:
           description: unique identifier of the Driver in the database
           $ref: '../commons.yml#/components/schemas/UUID'
         name:
           type: string
           description: Complete Driver name
           example: Foo bar
-        customerId:
+        customer_id:
           description: unique identifier of the Customer in the database
           $ref: '../commons.yml#/components/schemas/UUID'
         phone:
@@ -301,7 +301,7 @@ components:
           format: email
           description: E-mail address
           example: foo@bar.com
-      required: [ driverId, name, phone, mail ]
+      required: [ driver_id, name, phone, mail ]
 
     CreateDriverRequest:
       type: object
@@ -310,7 +310,7 @@ components:
           type: string
           description: Complete Driver name
           example: Foo bar
-        customerId:
+        customer_id:
           description: unique identifier of the Customer in the database
           $ref: '../commons.yml#/components/schemas/UUID'
         phone:
@@ -327,10 +327,10 @@ components:
     CreateDriverResponse:
       type: object
       properties:
-        driverId:
+        driver_id:
           description: unique identifier of the Driver in the database
           $ref: '../commons.yml#/components/schemas/UUID'
-      required: [ driverId ]
+      required: [ driver_id ]
    
 
     ListDriversResponse:
@@ -356,7 +356,7 @@ components:
           type: string
           description: Complete Driver name
           example: Foo bar
-        customerId:
+        customer_id:
           description: unique identifier of the Customer in the database
           $ref: '../commons.yml#/components/schemas/UUID'
         phone:

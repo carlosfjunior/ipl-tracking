@@ -1,0 +1,155 @@
+{
+	"info": {
+		"_postman_id": "100008b1-65f9-444a-9312-f78012bb354e",
+		"name": "XPTO Tracking - Sensor",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "List Sensors",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/sensors",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"sensors"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Sensor",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/sensors/:sensorId",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"sensors",
+						":sensorId"
+					],
+					"variable": [
+						{
+							"key": "sensorId",
+							"value": "397edcfb-b3f7-4487-a9f9-12a8fdbbfd3f"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Sensor",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Alface\",\r\n    \"sensor_type\": \"RPM\",\r\n    \"minValue\": 0.0,\r\n    \"maxValue\": 12.0,\r\n    \"unit\": \"rpms\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/sensors/:sensorId",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"sensors",
+						":sensorId"
+					],
+					"variable": [
+						{
+							"key": "sensorId",
+							"value": "397edcfb-b3f7-4487-a9f9-12a8fdbbfd3f",
+							"description": "(Required) Unique identifier of the Sensor in the database"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Sensor",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"RPM\",\r\n    \"sensor_type\": \"RPM\",\r\n    \"minValue\": 0.0,\r\n    \"maxValue\": 12.0,\r\n    \"unit\": \"rpms\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/sensors",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"sensors"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Sensor",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/sensors/90ee7cfc-c50f-4a30-9cb0-1e83509327a2",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"sensors",
+						"90ee7cfc-c50f-4a30-9cb0-1e83509327a2"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8080/tracking",
+			"type": "default"
+		}
+	]
+}

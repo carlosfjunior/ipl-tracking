@@ -1,0 +1,162 @@
+{
+	"info": {
+		"_postman_id": "0020dc4a-bdb4-4bc9-a41a-5cf8345fd53b",
+		"name": "XPTO Tracking - Data",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Telemetry Data",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"vehicleId\": \"0af401df-7d7a-1f36-817d-7b0a058d0003\",\n  \"date\": \"2021-01-30T08:30:00Z\",\n  \"sensor_type\": \"RPM\",\n  \"value\": \"teste\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/telemetrydata",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"telemetrydata"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Geo Data",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"mail\": \"7foo11@bar.com\",\n  \"name\": \"7Foo11 bar\",\n  \"phone\": \"735111912000111\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/tracking/geodata",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"tracking",
+						"geodata"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get a single TelemetryData's info",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/telemetrydata/:telemetryDataId",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"telemetrydata",
+						":telemetryDataId"
+					],
+					"variable": [
+						{
+							"key": "telemetryDataId",
+							"value": "e89af3c4-cad1-4cac-b3cc-62135f647635"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get a single GeoData's info",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/geodata/:geoDataId",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"geodata",
+						":geoDataId"
+					],
+					"variable": [
+						{
+							"key": "geoDataId",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get TelemetryData list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/telemetrydata",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"telemetrydata"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get GeoData list",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8083/tracking",
+			"type": "default"
+		}
+	]
+}

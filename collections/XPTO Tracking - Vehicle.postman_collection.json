@@ -1,0 +1,160 @@
+{
+	"info": {
+		"_postman_id": "2d33d86f-1bac-4735-ae28-0686c32066ab",
+		"name": "XPTO Tracking - Vehicle",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "List Vehicles",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/vehicles",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"vehicles"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Vehicle",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/vehicles/:vehicleId",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"vehicles",
+						":vehicleId"
+					],
+					"variable": [
+						{
+							"key": "vehicleId",
+							"value": "e74486b1-cec7-4236-af6c-2aee39d98397"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Vehicle",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"customerOwnerId\": \"92b9d4a9-7566-4912-8907-d406d6baaad3\",\n    \"telemetryProfileId\": \"9bc2109d-72f8-4b47-b00e-bfcbb354490e\",\n    \"currentDriverId\": \"2ccffe87-35c3-4f6a-b822-9d300f20bc9a\",\n    \"numberPlate\": \"RG-12-PG\",\n    \"vin\": \"4Y1SL65848Z411438\",\n    \"color\": \"blue\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/vehicles",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"vehicles"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Vehicle",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"customerOwnerId\": \"9e6a1deb-1fc4-463c-9ba2-aa3668c75ca1\",\n    \"telemetryProfileId\": \"f51652c5-b8c1-4bee-8ce3-8aec356f9a51\",\n    \"currentDriverId\": \"e64486ff-0494-41d8-8449-9eb939e1717b\",\n    \"numberPlate\": \"RG-12-PH\",\n    \"vin\": \"4Y1SL65848Z411439\",\n    \"color\": \"red\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/vehicles/:vehicleId",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"vehicles",
+						":vehicleId"
+					],
+					"variable": [
+						{
+							"key": "vehicleId",
+							"value": "e74486b1-cec7-4236-af6c-2aee39d98397"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Vehicle",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/vehicles/:vehicleId",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"vehicles",
+						":vehicleId"
+					],
+					"variable": [
+						{
+							"key": "vehicleId",
+							"value": "3002dd6a-0eb9-473f-a136-904076283fb4"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8081/tracking",
+			"type": "default"
+		}
+	]
+}

@@ -9,8 +9,6 @@ services:
         - spring.datasource.url=jdbc:postgresql://172.17.0.1:5960/xptotracking_ms_telemetry?currentSchema=public
         - spring.datasource.username=postgres
         - spring.datasource.password=postgres
-    volumes:
-        - ./xpto-tracking-telemetry-ms/data:/var/lib/postgresql
     depends_on:
         - telemetry_pg
 # Telemtry DB
@@ -32,12 +30,11 @@ services:
         - spring.datasource.username=postgres
         - spring.datasource.password=postgres
         - client.integration.tracking.telemetry-profile.base-path=http://172.17.0.1:8080/tracking
-        - client.integration.tracking.customer.base-path=http://172.17.0.1:8082/tracking
         - client.integration.tracking.driver.base-path=http://172.17.0.1:8082/tracking
-    volumes:
-        - ./xpto-tracking-vehicle-ms/data:/var/lib/postgresql
     depends_on:
         - vehicle_pg
+        - telemetry
+        - people
 # Vehicle DB
   vehicle_pg:
     image: postgres:13
@@ -54,8 +51,6 @@ services:
         - 8082:8080
     environment:
         - DATABASE_URI=postgresql://postgres:postgres@172.17.0.1:5962/xptotracking_ms_people
-    volumes:
-        - ./xpto-tracking-people-ms/data:/var/lib/postgresql
     depends_on:
         - people_pg
 # People DB
@@ -74,10 +69,10 @@ services:
         - 8083:8080
     environment:
         - DATABASE_URI=postgresql://postgres:postgres@172.17.0.1:5963/xptotracking_ms_data
-    volumes:
-        - ./xpto-tracking-data-ms/data:/var/lib/postgresql
+        - VEHICLE_API_URI=http://172.17.0.1:8081/tracking
     depends_on:
         - data_pg
+        - vehicle
 # Data DB
   data_pg:
     image: postgres:13

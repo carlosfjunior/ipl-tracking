@@ -1,3 +1,5 @@
+import os
+
 import connexion
 import json
 
@@ -17,7 +19,7 @@ geo_data_service = GeoDataService()
 geo_data_schema = GeoDataSchema()
 
 configuration = swagger_client.Configuration()
-configuration.host = "http://localhost:8080"
+configuration.host = os.environ['VEHICLE_API_URI']
 api_instance = swagger_client.VehicleApi(swagger_client.ApiClient(configuration))
 
 
