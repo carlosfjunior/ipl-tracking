@@ -21,7 +21,7 @@ The microservices were developed following the 12 factor patterns seen in class.
 11. Logs: All microservices log and store logs for diagnostic and troubleshooting purposes.
 12. Process Administration: All microservices are available for administration, allowing control and monitoring of the system as a whole.
 
-## Prerequisites
+## Requirements
 
 Before running the application, ensure that the following dependencies are correctly installed:
 
