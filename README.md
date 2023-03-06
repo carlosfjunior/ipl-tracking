@@ -57,7 +57,22 @@ for Windows execute
 
 ## Tests
 
-There are Postman collections for testing in the collections folder
+There are Postman collections for testing in the `collections` folder
+
+The endpoints are as follows according to each service
+
+- xpto-tracking-telemetry-ms
+  `http://localhost:8080/tracking/telemetryprofiles`
+  
+- xpto-tracking-vehicle-ms
+  `http://localhost:8081/tracking/vehicles`
+  
+- xpto-tracking-people-ms
+  `http://localhost:8082/tracking/customers`
+  `http://localhost:8082/tracking/drivers`
+- xpto-tracking-data-ms 
+  `http://localhost:8083/tracking/telemetrydata`
+  `http://localhost:8083/tracking/geodata`
 
 ## Problems and improvements identified
 
