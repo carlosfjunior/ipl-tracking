@@ -25,9 +25,9 @@ The microservices were developed following the 12 factor patterns seen in class.
 
 Before running the application, ensure that the following dependencies are correctly installed:
 
-Java 17 
-Maven 3.8.1
-Docker 20.10.22
+`Java 17`
+`Maven 3.8.1`
+`Docker 20.10.22`
 
 ## Install
 
