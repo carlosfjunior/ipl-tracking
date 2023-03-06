@@ -25,9 +25,11 @@ The microservices were developed following the 12 factor patterns seen in class.
 
 Before running the application, ensure that the following dependencies are correctly installed:
 
-`Java 17`
-`Maven 3.8.1`
-`Docker 20.10.22`
+```
+Java 17
+Maven 3.8.1
+Docker 20.10.22
+```
 
 ## Install
 
@@ -41,19 +43,27 @@ To install, download or clone the repo, then:
 
 Build Java projects inside their root folder
 
-`mvn clean install`
+```
+mvn clean install
+```
 
 After that return to ipl-tracking folder and for Mac or Linux make startup.sh executable with the command 
 
-`chmod +x startup.sh`
+```
+chmod +x startup.sh
+```
 
 and execute 
 
-`./startup.sh`
+```
+./startup.sh
+```
 
 for Windows execute
 
-`startup.bat`
+```
+startup.bat
+```
 
 ## Tests
 
@@ -62,17 +72,26 @@ There are Postman collections for testing in the `collections` folder
 The endpoints are as follows according to each service
 
 - xpto-tracking-telemetry-ms
-  `http://localhost:8080/tracking/telemetryprofiles`
+  ```
+  http://localhost:8080/tracking/telemetryprofiles
+  ```
   
 - xpto-tracking-vehicle-ms
-  `http://localhost:8081/tracking/vehicles`
+  ```
+  http://localhost:8081/tracking/vehicles
+  ```
   
 - xpto-tracking-people-ms
-  `http://localhost:8082/tracking/customers`
-  `http://localhost:8082/tracking/drivers`
+  ```
+  http://localhost:8082/tracking/customers
+  http://localhost:8082/tracking/drivers
+  ```
+  
 - xpto-tracking-data-ms 
-  `http://localhost:8083/tracking/telemetrydata`
-  `http://localhost:8083/tracking/geodata`
+  ```
+  http://localhost:8083/tracking/telemetrydata
+  http://localhost:8083/tracking/geodata
+  ```
 
 ## Problems and improvements identified
 
